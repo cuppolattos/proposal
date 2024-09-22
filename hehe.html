@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.....</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            position: relative;
+        }
+
+        #notification-banner {
+            background-color: #ffddf4;
+            border: 2px solid #ff69b4;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: absolute;
+            width: 250px;
+        }
+
+        #notification-message {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #accept-button {
+            background-color: #32cd32;
+            color: white;
+        }
+
+        #not-accept-button {
+            background-color: #ff4500;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="notification-banner">
+        <p id="notification-message">"Would you like to make our story even more special by letting me be your boyfriend?"</p>
+        <button id="accept-button">Yes!</button>
+        <button id="not-accept-button">No!😠</button>
+    </div>
+
+    <script>
+        const banner = document.getElementById('notification-banner');
+        const notAcceptButton = document.getElementById('not-accept-button');
+
+        notAcceptButton.addEventListener('click', () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            
+            const randomX = Math.floor(Math.random() * (windowWidth - banner.offsetWidth));
+            const randomY = Math.floor(Math.random() * (windowHeight - banner.offsetHeight));
+
+            
+            banner.style.left = `${randomX}px`;
+            banner.style.top = `${randomY}px`;
+        });
+
+        
+        document.getElementById('accept-button').addEventListener('click', () => {
+            banner.innerHTML = '<p>You have accepted the proposal! 😊</p>';
+        });
+
+        
+        function initBannerPosition() {
+            banner.style.left = `${(window.innerWidth - banner.offsetWidth) / 2}px`;
+            banner.style.top = `${(window.innerHeight - banner.offsetHeight) / 2}px`;
+        }
+
+        
+        window.onload = initBannerPosition;
+
+        
+        window.onresize = initBannerPosition;
+    </script>
+
+</body>
+</html>
